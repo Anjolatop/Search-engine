@@ -47,7 +47,10 @@ def favorite_article(favorite, titles):
 
 # FUNCTION 6
 def multiple_keywords(keyword, titles):
-    result = titles + search(keyword)
+    result = titles
+    for title in search(keyword):
+        if title not in result:
+            result.append(title)
     return result
 
 # --------------------------------------------------------------------------------------------
