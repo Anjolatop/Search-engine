@@ -9,7 +9,7 @@ def search(keyword):
     return titles_with_keywords
 
 
-#FUNCTION 2
+#FUNCTION 2.
 def title_length(max_length, titles):
     result = []
     for title in titles:
@@ -30,7 +30,7 @@ def article_count(count, titles):
     return result
 
 
-# FUNCTION 4
+# FUNCTION 4.
 def random_article(index, titles):
     if index not in range(len(titles)):
         return ''
