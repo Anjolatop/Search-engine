@@ -30,6 +30,26 @@ def article_count(count, titles):
     return result
 
 
+def article_count(count, titles):
+    result = []
+    new_titles = []
+    if type(titles) != list:
+        return []
+    for i in range(len(titles)):                  ### Because we don't want the result to return an empty list or a list with no info with it,
+        if titles[i].strip() == "":               ###  we iterate through titles and remove all empty strings.
+            continue
+        else:
+            new_titles.append(titles[i])
+    if not new_titles:
+        return []
+    if count > len(new_titles):
+        return new_titles
+    
+    for i in range(count):
+        new_titles[i] = new_titles[i].strip()
+        result.append(new_titles[i])
+    return result
+
 # FUNCTION 4.
 def random_article(index, titles):
     if index not in range(len(titles)):
