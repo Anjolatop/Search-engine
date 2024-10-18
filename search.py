@@ -30,6 +30,18 @@ def title_length(max_length, titles):
             result.append(title)
     return result
 
+#NEW
+def title_length(max_length, titles):
+    if type(titles) != list:
+        return []
+    result = []
+    for title in titles:
+        title = title.strip()
+        if len(title) == 0:
+            continue
+        if len(title) <= max_length:
+            result.append(title)
+    return result
 
 # FUNCTION 3
 def article_count(count, titles):
