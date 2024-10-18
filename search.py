@@ -7,6 +7,19 @@ def search(keyword):
         if keyword.lower() in title.lower():
             titles_with_keywords.append(title)
     return titles_with_keywords
+    
+#NEW
+def search(keyword):
+    if keyword = None:
+        return [] 
+     keyword = keyword.strip()
+     titles_with_keywords = []
+     if not keyword:
+        return []
+     for title in article_titles():
+        if keyword.lower() in title.lower():
+            titles_with_keywords.append(title)
+     return titles_with_keywords
 
 
 #FUNCTION 2.
