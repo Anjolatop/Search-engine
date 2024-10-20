@@ -31,3 +31,23 @@
         self.assertEqual(article_count(4, ["longer", "medium", "longer than usual", "longer than usualer"]), ["longer", "medium", "longer than usual", "longer than usualer"])
         self.assertEqual(article_count(2, [ "           ", "     longer        ", "medium", "longer than usual", "longer than usualer"]), ['longer', 'medium'])
         self.assertEqual(article_count(2, [ "      ", "", "           "]), [])
+
+        def test_random_article(self):
+        expected_dog_search_results = ['Edogawa, Tokyo', 'Kevin Cadogan', 'Endogenous cannabinoid', 'Black dog (ghost)', '2007 Bulldogs RLFC season', 'Mexican dog-faced bat', 'Dalmatian (dog)', 'Guide dog', '2009 Louisiana Tech Bulldogs football team', 'Georgia Bulldogs football', 'Endoglin', 'Sun dog', 'The Mandogs', 'Georgia Bulldogs football under Robert Winston', 'Landseer (dog)']
+        self.assertEqual(random_article(5, expected_dog_search_results), 'Mexican dog-faced bat')
+        self.assertEqual(random_article(3, ["         ", "longer", "medium", "longer than usual", "longer than usualer"]), "longer than usual",)
+        self.assertEqual(random_article(8, [" hi   ", "longer", "medium", "longer than usual", "longer than usualer"]),"")
+        self.assertEqual(random_article(0, [" hi   ", "longer", "medium", "longer than usual", "longer than usualer"])," hi   ")
+        self.assertEqual(random_article(1, ["    ", "longer", "medium", "longer than usual", "longer than usualer"]),'longer')
+        self.assertEqual(random_article(8, []), "")
+        self.assertEqual(random_article(4, ["longer", "medium", "longer than usual", "longer than usualer"]), "")
+
+    def test_favorite_article(self):
+        expected_dog_search_results = ['Edogawa, Tokyo', 'Kevin Cadogan', 'Endogenous cannabinoid', 'Black dog (ghost)', '2007 Bulldogs RLFC season', 'Mexican dog-faced bat', 'Dalmatian (dog)', 'Guide dog', '2009 Louisiana Tech Bulldogs football team', 'Georgia Bulldogs football', 'Endoglin', 'Sun dog', 'The Mandogs', 'Georgia Bulldogs football under Robert Winston', 'Landseer (dog)']
+        self.assertEqual(favorite_article('    KEvin Cadogan   ', expected_dog_search_results), True)
+        self.assertEqual(favorite_article('Kevin', expected_dog_search_results), False)
+        self.assertEqual(favorite_article('endogEnoUs caNnabinoid', expected_dog_search_results), True)
+        self.assertEqual(favorite_article("2007", expected_dog_search_results), False)
+        self.assertEqual(favorite_article(",", expected_dog_search_results), False)
+        self.assertEqual(favorite_article('2007 bulldogs rlfc season,expected_dog_search_results', expected_dog_search_results), False)
+        self.assertEqual(favorite_article("Mexican", expected_dog_search_results), False)
