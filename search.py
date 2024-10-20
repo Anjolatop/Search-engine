@@ -87,7 +87,13 @@ def favorite_article(favorite, titles):
         if favorite.lower() == article.lower():
             return True
     return False
-
+    
+#NEW
+def favorite_article(favorite, titles):
+    for article in titles:
+        if favorite.lower().strip() == article.lower().strip():
+            return True
+    return False
 
 # FUNCTION 6
 def multiple_keywords(keyword, titles):
