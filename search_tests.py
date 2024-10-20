@@ -32,7 +32,7 @@
         self.assertEqual(article_count(2, [ "           ", "     longer        ", "medium", "longer than usual", "longer than usualer"]), ['longer', 'medium'])
         self.assertEqual(article_count(2, [ "      ", "", "           "]), [])
 
-        def test_random_article(self):
+    def test_random_article(self):
         expected_dog_search_results = ['Edogawa, Tokyo', 'Kevin Cadogan', 'Endogenous cannabinoid', 'Black dog (ghost)', '2007 Bulldogs RLFC season', 'Mexican dog-faced bat', 'Dalmatian (dog)', 'Guide dog', '2009 Louisiana Tech Bulldogs football team', 'Georgia Bulldogs football', 'Endoglin', 'Sun dog', 'The Mandogs', 'Georgia Bulldogs football under Robert Winston', 'Landseer (dog)']
         self.assertEqual(random_article(5, expected_dog_search_results), 'Mexican dog-faced bat')
         self.assertEqual(random_article(3, ["         ", "longer", "medium", "longer than usual", "longer than usualer"]), "longer than usual",)
