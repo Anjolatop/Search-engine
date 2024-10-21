@@ -2,16 +2,6 @@ from wiki import article_titles, ask_search, ask_advanced_search
 
 # FUNCTION 1
 def search(keyword):
-    titles_with_keywords = []
-    if not keyword:
-        return []
-    for title in article_titles():
-        if keyword.lower() in title.lower():
-            titles_with_keywords.append(title)
-    return titles_with_keywords
-    
-#NEW
-def search(keyword):
     if not keyword:
         return []
      keyword = keyword.strip()
@@ -27,22 +17,11 @@ def search(keyword):
 def title_length(max_length, titles):
     result = []
     for title in titles:
+        title = title.strip()
         if len(title) <= max_length:
             result.append(title)
     return result
 
-#NEW
-def title_length(max_length, titles):
-    if type(titles) != list:
-        return []
-    result = []
-    for title in titles:
-        title = title.strip()
-        if len(title) == 0:
-            continue
-        if len(title) <= max_length:
-            result.append(title)
-    return result
 
 # FUNCTION 3
 def article_count(count, titles):
@@ -56,26 +35,6 @@ def article_count(count, titles):
     return result
 
 
-def article_count(count, titles):
-    result = []
-    new_titles = []
-    if type(titles) != list:
-        return []
-    for i in range(len(titles)):                  ### Because we don't want the result to return an empty list or a list with no info with it,
-        if titles[i].strip() == "":               ###  we iterate through titles and remove all empty strings.
-            continue
-        else:
-            new_titles.append(titles[i])
-    if not new_titles:
-        return []
-    if count > len(new_titles):
-        return new_titles
-    
-    for i in range(count):
-        new_titles[i] = new_titles[i].strip()
-        result.append(new_titles[i])
-    return result
-
 # FUNCTION 4.
 def random_article(index, titles):
     if index not in range(len(titles)):
@@ -86,13 +45,6 @@ def random_article(index, titles):
 # FUNCTION 5
 def favorite_article(favorite, titles):
     for article in titles:
-        if favorite.lower() == article.lower():
-            return True
-    return False
-    
-#NEW
-def favorite_article(favorite, titles):
-    for article in titles:
         if favorite.lower().strip() == article.lower().strip():
             return True
     return False
@@ -101,6 +53,7 @@ def favorite_article(favorite, titles):
 def multiple_keywords(keyword, titles):
     result = titles
     for title in search(keyword):
+        title = title.strip()
         if title not in result:
             result.append(title)
     return result
