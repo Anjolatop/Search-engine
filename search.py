@@ -1,3 +1,5 @@
+from wiki import article_titles, ask_search, ask_advanced_search
+
 # FUNCTION 1
 def search(keyword):
     titles_with_keywords = []
