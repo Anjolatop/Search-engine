@@ -101,6 +101,17 @@ class TestSearch(TestCase):
         self.assertEqual(output, expected)
 
     @patch('builtins.input')
+    def test_max_title_length(self, input_mock):
+        keyword = 'dog'
+        advanced_option = 1
+        max_length = 10
+
+        output = get_print(input_mock, [keyword, advanced_option, max_length])
+        expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + "\nHere are your articles: ['Edogawa, Tokyo', 'Guide dog']\n"
+
+        self.assertEqual(output, expected)
+
+    @patch('builtins.input')
     def test_max_number_of_articles(self, input_mock):
         keyword = 'dog'
         advanced_option = 2
