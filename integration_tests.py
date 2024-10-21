@@ -78,6 +78,28 @@ class TestSearch(TestCase):
 
         self.assertEqual(output, expected)
 
+    @patch('builtins.input')
+    def test_favorite_article_found(self, input_mock):
+        keyword = 'dog'
+        advanced_option = 4
+        favorite_article = 'Guide dog'
+
+        output = get_print(input_mock, [keyword, advanced_option, favorite_article])
+        expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + "\nHere are your articles: ['Edogawa, Tokyo', 'Kevin Cadogan', 'Endogenous cannabinoid', 'Black dog (ghost)', '2007 Bulldogs RLFC season', 'Mexican dog-faced bat', 'Dalmatian (dog)', 'Guide dog', '2009 Louisiana Tech Bulldogs football team', 'Georgia Bulldogs football', 'Endoglin', 'Sun dog', 'The Mandogs', 'Georgia Bulldogs football under Robert Winston', 'Landseer (dog)']\nYour favorite article is in the returned articles!\n"
+
+        self.assertEqual(output, expected)
+
+    @patch('builtins.input')
+    def test_favorite_article_not_found(self, input_mock):
+        keyword = 'dog'
+        advanced_option = 4
+        favorite_article = 'non-existent article'
+
+        output = get_print(input_mock, [keyword, advanced_option, favorite_article])
+        expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + "\nHere are your articles: ['Edogawa, Tokyo', 'Kevin Cadogan', 'Endogenous cannabinoid', 'Black dog (ghost)', '2007 Bulldogs RLFC season', 'Mexican dog-faced bat', 'Dalmatian (dog)', 'Guide dog', '2009 Louisiana Tech Bulldogs football team', 'Georgia Bulldogs football', 'Endoglin', 'Sun dog', 'The Mandogs', 'Georgia Bulldogs football under Robert Winston', 'Landseer (dog)']\nYour favorite article is not in the returned articles!\n"
+
+        self.assertEqual(output, expected)
+
 # Write tests above this line. Do not remove.
 if __name__ == "__main__":
     main()
