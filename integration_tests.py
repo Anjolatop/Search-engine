@@ -44,7 +44,7 @@ class TestSearch(TestCase):
         advanced_option = 6
 
         output = get_print(input_mock, [keyword, advanced_option])
-        expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + "\nNo articles found\n"
+        expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + "\nHere are your articles: ['List of Canadian musicians', 'French pop music', 'Edogawa, Tokyo', 'Noise (music)', '1922 in music', 'Ken Kennedy (computer scientist)', '1986 in music', 'Spain national beach soccer team', 'Kevin Cadogan', 'Endogenous cannabinoid', '2009 in music', 'Rock music', 'Medical value travel', 'Lights (musician)', 'List of soul musicians', 'Human computer', 'Aube (musician)', 'List of overtone musicians', 'Black dog (ghost)', 'USC Trojans volleyball', 'Tim Arnold (musician)', '2007 Bulldogs RLFC season', 'Peter Brown (music industry)', 'Mexican dog-faced bat', 'Embryo drawing', 'Old-time music', 'Arabic music', 'C Sharp (programming language)', 'List of Saturday Night Live musical sketches', 'Joe Becker (musician)', 'Will Johnson (soccer)', 'Aco (musician)', 'Geoff Smith (British musician)', 'Fiskerton, Lincolnshire', 'Reflection-oriented programming', 'B (programming language)', 'Richard Wright (musician)', 'Voice classification in non-classical music', 'Dalmatian (dog)', '1936 in music', 'Guide dog', '1962 in country music', 'List of dystopian music, TV programs, and games', 'Steven Cohen (soccer)', 'Steve Perry (musician)', '2009 Louisiana Tech Bulldogs football team', 'David Gray (musician)', 'Craig Martin (soccer)', 'Georgia Bulldogs football', 'Time travel', 'Fisk University', 'Annie (musical)', 'Alex Turner (musician)', 'Python (programming language)', 'List of gospel musicians', 'Tom Hooper (musician)', 'Endoglin', 'Indian classical music', 'Sun dog', '1996 in music', 'Lua (programming language)', 'Single-board computer', 'Mets de Guaynabo (volleyball)', \"United States men's national soccer team 2009 results\", 'Joseph Williams (musician)', 'The Hunchback of Notre Dame (musical)', 'China national soccer team', 'Covariance and contravariance (computer science)', 'English folk music (1500–1899)', 'Personal computer', 'The Mandogs', 'David Levi (musician)', 'Scores (computer virus)', 'Digital photography', 'George Crum (musician)', 'Solver (computer science)', 'Georgia Bulldogs football under Robert Winston', 'Wildlife photography', 'Traditional Thai musical instruments', 'Landseer (dog)', 'Charles McPherson (musician)', 'Comparison of programming languages (basic instructions)', 'Les Cousins (music club)', 'Paul Carr (musician)', '2006 in music', 'Spawning (computer gaming)', 'Sean Delaney (musician)', 'Tony Kaye (musician)', 'Danja (musician)', 'Ruby (programming language)', 'Texture (music)', 'List of computer role-playing games', 'Register (music)', 'Mode (computer interface)', '2007 in music', 'List of video games with time travel', '2008 in music', 'Semaphore (programming)', \"Wake Forest Demon Deacons men's soccer\"]\n"
 
         self.assertEqual(output, expected)
 
@@ -64,7 +64,7 @@ class TestSearch(TestCase):
         advanced_option = 6
 
         output = get_print(input_mock, [keyword, advanced_option])
-        expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + "\nHere are your articles: [‘Edogawa, Tokyo’, ‘Kevin Cadogan’, ‘Endogenous cannabinoid’, ‘Black dog (ghost)’, ‘2007 Bulldogs RLFC season’, ‘Mexican dog-faced bat’, ‘Dalmatian (dog)’, ‘Guide dog’, ‘2009 Louisiana Tech Bulldogs football team’, ‘Georgia Bulldogs football’, ‘Endoglin’, ‘Sun dog’, ‘The Mandogs’, ‘Georgia Bulldogs football under Robert Winston’, ‘Landseer (dog)’]\n"
+        expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + "\nHere are your articles: ['Edogawa, Tokyo', 'Kevin Cadogan', 'Endogenous cannabinoid', 'Black dog (ghost)', '2007 Bulldogs RLFC season', 'Mexican dog-faced bat', 'Dalmatian (dog)', 'Guide dog', '2009 Louisiana Tech Bulldogs football team', 'Georgia Bulldogs football', 'Endoglin', 'Sun dog', 'The Mandogs', 'Georgia Bulldogs football under Robert Winston', 'Landseer (dog)']\n"
 
         self.assertEqual(output, expected)
 
@@ -85,7 +85,7 @@ class TestSearch(TestCase):
         favorite_article = 'Guide dog'
 
         output = get_print(input_mock, [keyword, advanced_option, favorite_article])
-        expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + "\nHere are your articles: ['Edogawa, Tokyo', 'Kevin Cadogan', 'Endogenous cannabinoid', 'Black dog (ghost)', '2007 Bulldogs RLFC season', 'Mexican dog-faced bat', 'Dalmatian (dog)', 'Guide dog', '2009 Louisiana Tech Bulldogs football team', 'Georgia Bulldogs football', 'Endoglin', 'Sun dog', 'The Mandogs', 'Georgia Bulldogs football under Robert Winston', 'Landseer (dog)']\nYour favorite article is in the returned articles!\n"
+        expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) +  '\n' + print_advanced_option(advanced_option) + favorite_article + '\n' + "\nHere are your articles: ['Edogawa, Tokyo', 'Kevin Cadogan', 'Endogenous cannabinoid', 'Black dog (ghost)', '2007 Bulldogs RLFC season', 'Mexican dog-faced bat', 'Dalmatian (dog)', 'Guide dog', '2009 Louisiana Tech Bulldogs football team', 'Georgia Bulldogs football', 'Endoglin', 'Sun dog', 'The Mandogs', 'Georgia Bulldogs football under Robert Winston', 'Landseer (dog)']\nYour favorite article is in the returned articles!\n"
 
         self.assertEqual(output, expected)
 
@@ -96,7 +96,7 @@ class TestSearch(TestCase):
         favorite_article = 'non-existent article'
 
         output = get_print(input_mock, [keyword, advanced_option, favorite_article])
-        expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + "\nHere are your articles: ['Edogawa, Tokyo', 'Kevin Cadogan', 'Endogenous cannabinoid', 'Black dog (ghost)', '2007 Bulldogs RLFC season', 'Mexican dog-faced bat', 'Dalmatian (dog)', 'Guide dog', '2009 Louisiana Tech Bulldogs football team', 'Georgia Bulldogs football', 'Endoglin', 'Sun dog', 'The Mandogs', 'Georgia Bulldogs football under Robert Winston', 'Landseer (dog)']\nYour favorite article is not in the returned articles!\n"
+        expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + favorite_article + '\n' + "\nHere are your articles: ['Edogawa, Tokyo', 'Kevin Cadogan', 'Endogenous cannabinoid', 'Black dog (ghost)', '2007 Bulldogs RLFC season', 'Mexican dog-faced bat', 'Dalmatian (dog)', 'Guide dog', '2009 Louisiana Tech Bulldogs football team', 'Georgia Bulldogs football', 'Endoglin', 'Sun dog', 'The Mandogs', 'Georgia Bulldogs football under Robert Winston', 'Landseer (dog)']\nYour favorite article is not in the returned articles!\n"
 
         self.assertEqual(output, expected)
 
@@ -107,7 +107,7 @@ class TestSearch(TestCase):
         max_length = 10
 
         output = get_print(input_mock, [keyword, advanced_option, max_length])
-        expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + "\nHere are your articles: ['Edogawa, Tokyo', 'Guide dog']\n"
+        expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + str(max_length) + '\n' + "\nHere are your articles: ['Guide dog', 'Endoglin', 'Sun dog']\n"
 
         self.assertEqual(output, expected)
 
@@ -118,7 +118,7 @@ class TestSearch(TestCase):
         max_articles = 5
 
         output = get_print(input_mock, [keyword, advanced_option, max_articles])
-        expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + "\nHere are your articles: ['Edogawa, Tokyo', 'Kevin Cadogan', 'Endogenous cannabinoid', 'Black dog (ghost)', '2007 Bulldogs RLFC season']\n"
+        expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + str(max_articles) + '\n' + "\nHere are your articles: ['Edogawa, Tokyo', 'Kevin Cadogan', 'Endogenous cannabinoid', 'Black dog (ghost)', '2007 Bulldogs RLFC season']\n"
 
         self.assertEqual(output, expected)
 
@@ -129,7 +129,7 @@ class TestSearch(TestCase):
         index = 2
 
         output = get_print(input_mock, [keyword, advanced_option, index])
-        expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + "\nHere are your articles: ['Edogawa, Tokyo', 'Kevin Cadogan', 'Endogenous cannabinoid']\n"
+        expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + str(index) + '\n' + "\nHere are your articles: Endogenous cannabinoid\n"
 
         self.assertEqual(output, expected)
 
@@ -140,7 +140,7 @@ class TestSearch(TestCase):
         additional_keyword = 'bat'
 
         output = get_print(input_mock, [keyword, advanced_option, additional_keyword])
-        expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + "\nHere are your articles: ['Edogawa, Tokyo', 'Kevin Cadogan', 'Endogenous cannabinoid', 'Black dog (ghost)', '2007 Bulldogs RLFC season', 'Mexican dog-faced bat', 'Dalmatian (dog)', 'Guide dog']\n"
+        expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + additional_keyword + '\n' + "\nHere are your articles: ['Edogawa, Tokyo', 'Kevin Cadogan', 'Endogenous cannabinoid', 'Black dog (ghost)', '2007 Bulldogs RLFC season', 'Mexican dog-faced bat', 'Dalmatian (dog)', 'Guide dog', '2009 Louisiana Tech Bulldogs football team', 'Georgia Bulldogs football', 'Endoglin', 'Sun dog', 'The Mandogs', 'Georgia Bulldogs football under Robert Winston', 'Landseer (dog)']\n"
 
         self.assertEqual(output, expected)
 
