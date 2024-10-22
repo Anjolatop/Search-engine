@@ -1,19 +1,21 @@
 from wiki import article_titles, ask_search, ask_advanced_search
 
 # FUNCTION 1
+# Iterates through the articles list(called with articles_titles()) and returns a list with the titles that contain the stripped keywords
 def search(keyword):
     if not keyword:
         return []
-     keyword = keyword.strip()
-     titles_with_keywords = []
+    keyword = keyword.strip()
+    titles_with_keywords = []
      
-     for title in article_titles():
+    for title in article_titles():
         if keyword.lower() in title.lower():
             titles_with_keywords.append(title)
-     return titles_with_keywords
+    return titles_with_keywords
 
 
-#FUNCTION 2.
+#FUNCTION 2
+# Iterates through the titles list and returns a list of titles that are not greater than the max_length
 def title_length(max_length, titles):
     result = []
     for title in titles:
@@ -24,6 +26,7 @@ def title_length(max_length, titles):
 
 
 # FUNCTION 3
+# Iterates through the titles list and returns a list of the first 'count' titles.
 def article_count(count, titles):
     result = []
     if not titles:
@@ -35,7 +38,8 @@ def article_count(count, titles):
     return result
 
 
-# FUNCTION 4.
+# FUNCTION 4
+# 
 def random_article(index, titles):
     if index not in range(len(titles)):
         return ''
