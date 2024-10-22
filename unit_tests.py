@@ -13,7 +13,7 @@ def test_search(self):
         self.assertEqual(search("List of Canadian musicians"), ['List of Canadian musicians'])
     
 
-    def test_title_length(self):
+def test_title_length(self):
         expected_answer = ['short', 'longer', 'medium']
         
         self.assertEqual(title_length(10, ["         short", "longer", "medium", "longer than usual", "longer than usualer"]), expected_answer) 
@@ -23,7 +23,7 @@ def test_search(self):
         self.assertEqual(title_length(10, []), [])
         self.assertEqual(title_length(-5, ["hellooooooooooooooooooooooo"]), [])
 
-    def test_article_count(self):
+def test_article_count(self):
         self.assertEqual(article_count(-5, []), [])
         self.assertEqual(article_count(3, ["longer", "medium", "longer than usual", "longer than usualer"]), ["longer", "medium", "longer than usual"] )
         self.assertEqual(article_count(8, ["longer", "medium", "longer than usual", "longer than usualer"]),['longer', 'medium', 'longer than usual', 'longer than usualer'])
@@ -33,7 +33,7 @@ def test_search(self):
         self.assertEqual(article_count(4, ["longer", "medium", "longer than usual", "longer than usualer"]), ["longer", "medium", "longer than usual", "longer than usualer"])
         self.assertEqual(article_count(2, ["     longer        ", "medium", "longer than usual", "longer than usualer"]), ["     longer        ", "medium"])
 
-    def test_random_articles(self):
+def test_random_articles(self):
         expected_dog_search_results = ['Edogawa, Tokyo', 'Kevin Cadogan', 'Endogenous cannabinoid', 'Black dog (ghost)', '2007 Bulldogs RLFC season', 'Mexican dog-faced bat', 'Dalmatian (dog)', 'Guide dog', '2009 Louisiana Tech Bulldogs football team', 'Georgia Bulldogs football', 'Endoglin', 'Sun dog', 'The Mandogs', 'Georgia Bulldogs football under Robert Winston', 'Landseer (dog)']
         
         self.assertEqual(random_article(5, expected_dog_search_results), 'Mexican dog-faced bat')
@@ -44,7 +44,7 @@ def test_search(self):
         self.assertEqual(random_article(8, []), "")
         self.assertEqual(random_article(4, ["longer", "medium", "longer than usual", "longer than usualer"]), "")
 
-    def test_favorite_article(self):
+def test_favorite_article(self):
         expected_dog_search_results = ['Edogawa, Tokyo', 'Kevin Cadogan', 'Endogenous cannabinoid', 'Black dog (ghost)', '2007 Bulldogs RLFC season', 'Mexican dog-faced bat', 'Dalmatian (dog)', 'Guide dog', '2009 Louisiana Tech Bulldogs football team', 'Georgia Bulldogs football', 'Endoglin', 'Sun dog', 'The Mandogs', 'Georgia Bulldogs football under Robert Winston', 'Landseer (dog)']
         
         self.assertEqual(favorite_article('    KEvin Cadogan   ', expected_dog_search_results), True)
@@ -56,7 +56,7 @@ def test_search(self):
         self.assertEqual(favorite_article("Mexican", expected_dog_search_results), False)
 
 
-    def test_multiple_keyword(self):
+def test_multiple_keyword(self):
         expected_dog_search_results = ['Edogawa, Tokyo', 'Kevin Cadogan', 'Endogenous cannabinoid', 'Black dog (ghost)', '2007 Bulldogs RLFC season', 'Mexican dog-faced bat', 'Dalmatian (dog)', 'Guide dog', '2009 Louisiana Tech Bulldogs football team', 'Georgia Bulldogs football', 'Endoglin', 'Sun dog', 'The Mandogs', 'Georgia Bulldogs football under Robert Winston', 'Landseer (dog)']
         
         self.assertEqual(multiple_keywords("   en   ",['Edogawa, Tokyo', 'Kevin Cadogan', 'Endogenous cannabinoid', 'Black dog (ghost)', '2007 Bulldogs RLFC season', 'Mexican dog-faced bat', 'Dalmatian (dog)', 'Guide dog', '2009 Louisiana Tech Bulldogs football team', 'Georgia Bulldogs football', 'Endoglin', 'Sun dog', 'The Mandogs', 'Georgia Bulldogs football under Robert Winston', 'Landseer (dog)']), ['Edogawa, Tokyo', 'Kevin Cadogan', 'Endogenous cannabinoid', 'Black dog (ghost)', '2007 Bulldogs RLFC season', 'Mexican dog-faced bat', 'Dalmatian (dog)', 'Guide dog', '2009 Louisiana Tech Bulldogs football team', 'Georgia Bulldogs football', 'Endoglin', 'Sun dog', 'The Mandogs', 'Georgia Bulldogs football under Robert Winston', 'Landseer (dog)', 'French pop music', 'Ken Kennedy (computer scientist)', 'Reflection-oriented programming', 'Steven Cohen (soccer)', "United States men's national soccer team 2009 results", 'Covariance and contravariance (computer science)', 'English folk music (1500–1899)', 'Solver (computer science)', 'Traditional Thai musical instruments', "Wake Forest Demon Deacons men's soccer"] )
