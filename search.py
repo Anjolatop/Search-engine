@@ -39,7 +39,7 @@ def article_count(count, titles):
 
 
 # FUNCTION 4
-# 
+# Returns the title at index 'index' in 'titles'
 def random_article(index, titles):
     if index not in range(len(titles)):
         return ''
@@ -47,6 +47,7 @@ def random_article(index, titles):
 
 
 # FUNCTION 5
+# Iterates through 'titles' list and checks if 'favorite' (case-insensitive) is in 'titles'
 def favorite_article(favorite, titles):
     for article in titles:
         if favorite.lower().strip() == article.lower().strip():
@@ -54,6 +55,7 @@ def favorite_article(favorite, titles):
     return False
 
 # FUNCTION 6
+# Iterates through the list returned from calling 'search' on 'keyword', adds it to the titles list and returns the result.
 def multiple_keywords(keyword, titles):
     result = titles
     for title in search(keyword):
