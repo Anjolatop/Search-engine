@@ -42,7 +42,7 @@ def search(keyword):
 #   exceeding max_length number of characters
 def article_length(max_length, metadata):
     for i in metadata.copy():
-        if len(i[0]) > max_length:
+        if i[3] > max_length:
             metadata.remove(i)
     return metadata
 # print(article_length(30,[['Spain national beach soccer team', 'jack johnson', 1233458894, 1526], ['Will Johnson (soccer)', 'Burna Boy', 1218489712, 3562], ['Steven Cohen (soccer)', 'Mack Johnson', 1237669593, 2117]] ))
