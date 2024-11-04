@@ -168,6 +168,14 @@ def refine_search(keyword, metadata):
 #print(refine_search("soccer", [['Spain national beach soccer team', 'jack johnson', 1233458894, 1526], ['List of Canadian musicians', 'Jack Johnson', 1181623340, 21023, ['canadian', 'canada', 'lee', 'jazz', 'and', 'rock', 'singer', 'songwriter', 'also', 'known', 'hip', 'hop', 'musician', 'folk', 'pop', 'composer', 'drummer', 'player', 'rapper', 'john', 'don', 'guitarist', 'the', 'andrew', 'country', 'indie', 'charlie', 'alternative', 'paul', 'matt', 'james', 'blues', 'bassist', 'cellist', 'pianist', 'artist', 'marie', 'dance', 'winner', 'idol', 'mike', 'keyboardist', 'jason', 'music', 'tim', 'kim', 'soprano', 'kevin', 'martin', 'violinist', 'dan', 'blue', 'new', 'daniel', 'producer', 'punk', 'conductor', 'gospel', 'dave', 'big', 'band', 'george', 'brian', 'bill', 'classical', 'david', 'operatic', 'michael', 'film', 'jon', 'soul', 'billy', 'record', 'jim', 'member', 'broken', 'social', 'scene', 'musical', 'theatre', 'actress', 'actor', 'peter', 'ian', 'electronic', 'rhythm', 'taylor', 'vocalist', 'jesse', 'radio', 'personality', 'for', 'andy', 'former', 'solo', 'chris', 'ryan', 'mark', 'scott', 'kate', 'multi', 'formerly', 'mother', 'instrumentalist', 'johnson', 'white', 'smith']]]))
 
 
+def refine_search(keyword, metadata):
+    result = []
+    value1 = search(keyword)
+    for i in metadata:
+        if i in value1:
+            result.append(i)
+    return result
+
 
 
 
