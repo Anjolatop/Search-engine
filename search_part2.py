@@ -151,20 +151,7 @@ def title_and_author(metadata):
 #   be in the same order that they were returned in the basic search. Two
 #   articles can be considered the same if both their author and article title
 #   match exactly.
-def refine_search(keyword, metadata):
-    result = []
-    keyword = keyword.lower()
-    for article in metadata:
-        title = article[0]
-        keywords = article[4]
-        title_match = keyword in title.lower()
-        keyword_match = False
-        for kw in keywords:
-            if keyword == kw.lower():
-                keyword_match = True
-        if title_match or keyword_match:
-            result.append(article)
-    return result
+
 #print(refine_search("soccer", [['Spain national beach soccer team', 'jack johnson', 1233458894, 1526], ['List of Canadian musicians', 'Jack Johnson', 1181623340, 21023, ['canadian', 'canada', 'lee', 'jazz', 'and', 'rock', 'singer', 'songwriter', 'also', 'known', 'hip', 'hop', 'musician', 'folk', 'pop', 'composer', 'drummer', 'player', 'rapper', 'john', 'don', 'guitarist', 'the', 'andrew', 'country', 'indie', 'charlie', 'alternative', 'paul', 'matt', 'james', 'blues', 'bassist', 'cellist', 'pianist', 'artist', 'marie', 'dance', 'winner', 'idol', 'mike', 'keyboardist', 'jason', 'music', 'tim', 'kim', 'soprano', 'kevin', 'martin', 'violinist', 'dan', 'blue', 'new', 'daniel', 'producer', 'punk', 'conductor', 'gospel', 'dave', 'big', 'band', 'george', 'brian', 'bill', 'classical', 'david', 'operatic', 'michael', 'film', 'jon', 'soul', 'billy', 'record', 'jim', 'member', 'broken', 'social', 'scene', 'musical', 'theatre', 'actress', 'actor', 'peter', 'ian', 'electronic', 'rhythm', 'taylor', 'vocalist', 'jesse', 'radio', 'personality', 'for', 'andy', 'former', 'solo', 'chris', 'ryan', 'mark', 'scott', 'kate', 'multi', 'formerly', 'mother', 'instrumentalist', 'johnson', 'white', 'smith']]]))
 
 
