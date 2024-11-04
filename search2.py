@@ -160,3 +160,60 @@ def refine_search(keyword, metadata):
             result.append(i)
     return result
 # print(refine_search("soccer", [['Spain national beach soccer team', 'jack johnson', 1233458894, 1526], ['List of Canadian musicians', 'Jack Johnson', 1181623340, 21023, ['canadian', 'canada', 'lee', 'jazz', 'and', 'rock', 'singer', 'songwriter', 'also', 'known', 'hip', 'hop', 'musician', 'folk', 'pop', 'composer', 'drummer', 'player', 'rapper', 'john', 'don', 'guitarist', 'the', 'andrew', 'country', 'indie', 'charlie', 'alternative', 'paul', 'matt', 'james', 'blues', 'bassist', 'cellist', 'pianist', 'artist', 'marie', 'dance', 'winner', 'idol', 'mike', 'keyboardist', 'jason', 'music', 'tim', 'kim', 'soprano', 'kevin', 'martin', 'violinist', 'dan', 'blue', 'new', 'daniel', 'producer', 'punk', 'conductor', 'gospel', 'dave', 'big', 'band', 'george', 'brian', 'bill', 'classical', 'david', 'operatic', 'michael', 'film', 'jon', 'soul', 'billy', 'record', 'jim', 'member', 'broken', 'social', 'scene', 'musical', 'theatre', 'actress', 'actor', 'peter', 'ian', 'electronic', 'rhythm', 'taylor', 'vocalist', 'jesse', 'radio', 'personality', 'for', 'andy', 'former', 'solo', 'chris', 'ryan', 'mark', 'scott', 'kate', 'multi', 'formerly', 'mother', 'instrumentalist', 'johnson', 'white', 'smith']]]))
+
+
+
+
+
+
+
+
+
+
+
+# Prints out articles based on searched keyword and advanced options
+def display_result():
+    # Stores list of articles returned from searching user's keyword
+    articles = search(ask_search())
+
+    # advanced stores user's chosen advanced option (1-7)
+    # value stores user's response in being asked the advanced option
+    advanced, value = ask_advanced_search()
+
+    if advanced == 1:
+        # value stores max article title length in number of characters
+        # Update article metadata to contain only ones of the maximum length
+        articles = article_length(value, articles)
+    if advanced == 2:
+        # value stores max number of unique authors
+        # Update article metadata to contain only the max number of authors
+        articles = unique_authors(value, articles)
+    elif advanced == 3:
+        # Update articles to only contain the most recent article
+        articles = most_recent_article(articles)
+    elif advanced == 4:
+        # value stores author
+        # Store whether author is in search results into variable named 
+        # has_favorite
+        has_favorite = favorite_author(value, articles)
+    elif advanced == 5:
+        # Update article metadata to only contain titles and authors
+        articles = title_and_author(articles)
+    elif advanced == 6:
+        # value stores keyword to search
+        # Update article metadata to contain only article metadata
+        # that is contained in both searches
+        articles = refine_search(value, articles)
+
+    print()
+
+    if not articles:
+        print("No articles found")
+    else:
+        print("Here are your articles: " + str(articles))
+
+    if advanced == 4:
+        print("Your favorite author is" + ("" if has_favorite else " not") + " in the returned articles!")
+
+if __name__ == "__main__":
+    display_result()
