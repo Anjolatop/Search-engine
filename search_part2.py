@@ -23,7 +23,7 @@ def search(keyword):
         return list_of_artices
     keyword = keyword.strip()
     for i in article_metadata():
-        for j in i[3]:
+        for j in i[4]:
             if keyword.lower() == j.lower():
                 list_of_artices.append(i[:4])
     return list_of_artices
