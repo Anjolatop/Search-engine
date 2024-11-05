@@ -92,13 +92,13 @@ def unique_authors(count, metadata):
 #   to the timestamp. Note this should return just a 1D list representing
 #   a single article.
 def most_recent_article(metadata):
-    hold = metadata[0][2]
+    hold = 0
     count  = 0 
     for i in range(1, len(metadata)):
         if metadata[i][2] > hold:
             hold = metadata[i][2]
-            count = i
-    return metadata[count]
+            count = metadata[i]
+    return count
 # print(most_recent_article([['Spain national beach soccer team', 'jack johnson', 1233458894, 1526], ['Will Johnson (soccer)', 'Burna Boy', 1218489712, 3562], ['Steven Cohen (soccer)', 'Mack Johnson', 37669593, 2117]] ))
 
 
