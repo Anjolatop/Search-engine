@@ -82,6 +82,7 @@ class TestSearch(TestCase):
             ['Goalkeeping Mastery', 'Manuel Neuer', 1234567890, 1700]
         ]
         self.assertEqual(most_recent_article(metadata), metadata[0])
+        self.assertEqual(most_recent_article(search('anjola')), False)
 
     def test_favorite_author(self):
         metadata = [
@@ -112,27 +113,25 @@ class TestSearch(TestCase):
             ('Goalkeeping Mastery', 'Manuel Neuer')
         ])
         self.assertEqual(title_and_author([]), [])
-
+        
     def test_refine_search(self):
-        metadata = [
-            ['The History of the World Cup', 'Pelé', 1234567890, 2000, ['world', 'cup', 'soccer', 'history']],
-            ['Soccer Strategies', 'Johan Cruyff', 1234567891, 1800, ['soccer', 'strategy', 'tactics']],
-            ['Advanced Goalkeeping Techniques', 'Manuel Neuer', 1234567892, 1900, ['goalkeeping', 'techniques', 'soccer']]
+        expected_result = [
+            ['Spain national beach soccer team', 'jack johnson', 1233458894, 1526],
+            ['Will Johnson (soccer)', 'Burna Boy', 1218489712, 3562],
+            ['Steven Cohen (soccer)', 'Mack Johnson', 1237669593, 2117]
+            ]
+        self.assertEqual(refine_search('soccer', search('soccer')), expected_result)
+        expected_result = [
+            ['List of Canadian musicians', 'Jack Johnson', 1181623340, 21023],
+            ['2009 in music', 'RussBot', 1235133583, 69451],
+            ['Lights (musician)', 'Burna Boy', 1213914297, 5898],
+            ['Will Johnson (soccer)', 'Burna Boy', 1218489712, 3562],
+            ['2007 in music', 'Bearcat', 1169248845, 45652],
+            ['2008 in music', 'Burna Boy', 1217641857, 107605]
         ]
-        search_results = [metadata[0], metadata[1]]
-        self.assertEqual(refine_search('world', search_results), [metadata[0]])
-        metadata = [
-            ['The History of the World Cup', 'Pelé', 1234567890, 2000, ['world', 'cup', 'soccer', 'history']],
-            ['Soccer Strategies', 'Johan Cruyff', 1234567891, 1800, ['soccer', 'strategy', 'tactics']]
-        ]
-        search_results = [metadata[0], metadata[1]]
-        self.assertEqual(refine_search('Techniques', search_results), [])
-        metadata = [
-            ['The Art of Free Kicks', 'David Beckham', 1234567890, 1600, ['free', 'kicks', 'soccer']],
-            ['Goal Scoring Techniques', 'Cristiano Ronaldo', 1234567891, 1700, ['goal', 'scoring', 'techniques']]
-        ]
-        search_results = [metadata[0]]
-        self.assertEqual(refine_search('FREE', search_results), [metadata[0]])
+        self.assertEqual(refine_search('canadian', search('CANADIAN')), expected_result)
+        expected_result = []
+        self.assertEqual(refine_search('soccer', search('anjola')), expected_result)
 
     #####################
     # INTEGRATION TESTS #
