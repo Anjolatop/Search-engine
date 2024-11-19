@@ -73,9 +73,9 @@ def title_to_info(metadata):
 # Return: list of titles with articles containing the keyword, case-sensitive
 #         or an empty list if none are found
 def search(keyword, keyword_to_titles):
-    if keyword.lower().strip() not in keyword_to_titles:
+    if keyword not in keyword_to_titles:
         return []
-    return keyword_to_titles[keyword.lower().strip()]
+    return keyword_to_titles[keyword]
 
 
 '''
@@ -94,7 +94,11 @@ Functions 4-8 are called after searching for a list of articles containing the u
 # Return: list of article titles from given titles for articles that do not
 #         exceed max_length number of characters
 def article_length(max_length, article_titles, title_to_info):
-    pass
+    titles = []
+    for title in article_titles:
+        if title_to_info[title]['length'] <= max_length:
+            titles.append(title)
+    return titles
 
 
 # 5) 
@@ -115,7 +119,13 @@ def article_length(max_length, article_titles, title_to_info):
 #   'another author': ['article title 3']
 # }
 def key_by_author(article_titles, title_to_info):
-    pass
+    titles_by_author = {}
+    for title in article_titles:
+        if title_to_info[title]['author'] in titles_by_author:
+            titles_by_author[title_to_info[title]['author']].append(title)
+        else:
+            titles_by_author[title_to_info[title]['author']] = [title]
+    return titles_by_author
 
 
 # 6) 
@@ -131,7 +141,11 @@ def key_by_author(article_titles, title_to_info):
 # Return: list of article titles from the initial search written by the author
 #         or an empty list if none.
 def filter_to_author(author, article_titles, title_to_info):
-    pass
+    title_by_author = []
+    for title in article_titles:
+        if title_to_info[title]['author'].lower().strip() == author.lower().strip():
+            title_by_author.append(title)
+    return title_by_author
 
 
 # 7) 
@@ -147,7 +161,13 @@ def filter_to_author(author, article_titles, title_to_info):
 # Return: list of articles from the basic search that do not include the
 #         new keyword
 def filter_out(keyword, article_titles, keyword_to_titles):
-    pass
+    if keyword not in keyword_to_titles:
+        return article_titles
+    filtered_article_titles = []
+    for title in article_titles:
+        if title not in keyword_to_titles[keyword]:
+            filtered_article_titles.append(title)
+    return filtered_article_titles
 
 
 # 8) 
@@ -163,7 +183,12 @@ def filter_out(keyword, article_titles, keyword_to_titles):
 # Return: list of article titles from the basic search that were published
 #         during the provided year.
 def articles_from_year(year, article_titles, title_to_info):
-    pass
+    
+    articles_by_year = []
+    for title in article_titles:
+        if datetime.datetime.fromtimestamp(title_to_info[title]['timestamp']).year == year:
+            articles_by_year.append(title)
+    return articles_by_year
 
 
 # Prints out articles based on searched keyword and advanced options
