@@ -183,7 +183,6 @@ def filter_out(keyword, article_titles, keyword_to_titles):
 # Return: list of article titles from the basic search that were published
 #         during the provided year.
 def articles_from_year(year, article_titles, title_to_info):
-    
     articles_by_year = []
     for title in article_titles:
         if datetime.datetime.fromtimestamp(title_to_info[title]['timestamp']).year == year:
