@@ -1,4 +1,9 @@
-import unittest
+from search import keyword_to_titles, title_to_info, search, article_length,key_by_author, filter_to_author, filter_out, articles_from_year
+from search_tests_helper import get_print, print_basic, print_advanced, print_advanced_option
+from wiki import article_metadata
+from unittest.mock import patch
+from unittest import TestCase, main
+
 
 class TestKeywordToTitles(unittest.TestCase):
     def test_normal_case1(self):
