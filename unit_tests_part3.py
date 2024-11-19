@@ -31,7 +31,7 @@ class TestKeywordToTitles(unittest.TestCase):
 
 
 
-    def test_normal_case(self):
+    def test_normal_case1(self):
         metadata = [
             ("Title1", "Author1", "2023-01-01", 500),
             ("Title2", "Author2", "2023-01-02", 1000),
