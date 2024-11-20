@@ -5,7 +5,7 @@ from unittest.mock import patch
 from unittest import TestCase, main
 
 
-class TestKeywordToTitles(unittest.TestCase):
+class TestSearch(TestCase):
     def test_normal_case1(self):
         metadata = [
             (1, "Title1", "Author1", "2023", ["keyword1", "keyword2"]),
