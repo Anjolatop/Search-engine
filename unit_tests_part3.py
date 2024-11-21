@@ -4,8 +4,12 @@ from wiki import article_metadata
 from unittest.mock import patch
 from unittest import TestCase, main
 
-
 class TestSearch(TestCase):
+
+    ##############
+    # UNIT TESTS #
+    ##############
+
     def test_normal_case1(self):
         metadata = [
             (1, "Title1", "Author1", "2023", ["keyword1", "keyword2"]),
@@ -19,7 +23,6 @@ class TestSearch(TestCase):
             "keyword4": [3],
         }
         self.assertEqual(keyword_to_titles(metadata), expected_output)
-
   
     def test_empty_metadata1(self):
         metadata = []
@@ -34,8 +37,6 @@ class TestSearch(TestCase):
       expected_output = {}
       self.assertEqual(keyword_to_titles(metadata), expected_output)
 
-
-
     def test_normal_case2(self):
         metadata = [
             ("Title1", "Author1", "2023-01-01", 500),
@@ -48,8 +49,6 @@ class TestSearch(TestCase):
             "Title3": {"author": "Author3", "timestamp": "2023-01-03", "length": 750},
         }
         self.assertEqual(title_to_info(metadata), expected_output)
-
-
     
     def test_empty_metadata2(self):
         """Test the function with empty metadata input."""
@@ -160,7 +159,6 @@ class TestSearch(TestCase):
         result = search(keyword, keyword_to_titles)
         self.assertEqual(result, expected)
 
-
     def test_articles_within_max_length4(self):
         """Test when some articles have lengths less than or equal to max_length."""
         article_titles = ["Article1", "Article2", "Article3"]
@@ -237,7 +235,6 @@ class TestSearch(TestCase):
         result = key_by_author(article_titles, title_to_info)
         self.assertEqual(result, expected)
 
-
     def test_author_found6(self):
         """Test when the specified author has written some of the articles."""
         article_titles = ["Article1", "Article2", "Article3"]
@@ -277,8 +274,6 @@ class TestSearch(TestCase):
         result = filter_to_author(author, article_titles, title_to_info)
         self.assertEqual(result, expected)
 
-
-    
     def test_keyword_found7(self):
         """Test when the keyword is found, and some articles are associated with it."""
         article_titles = ["Article1", "Article2", "Article3", "Article4"]
@@ -318,7 +313,7 @@ class TestSearch(TestCase):
         """Test when articles from a specific year are returned correctly."""
         article_titles = ["Article1", "Article2", "Article3"]
         title_to_info = {
-            "Article1": {"timestamp": 1609459200},  # Jan 1, 2021
+            "Article1": {"timestamp": 1609567200},  # Jan 2, 2021
             "Article2": {"timestamp": 1612137600},  # Feb 1, 2021
             "Article3": {"timestamp": 1622505600},  # Jun 1, 2021
         }
@@ -331,9 +326,9 @@ class TestSearch(TestCase):
         """Test when articles from a different year are returned correctly."""
         article_titles = ["Article1", "Article2", "Article3"]
         title_to_info = {
-            "Article1": {"timestamp": 1609459200},  # Jan 1, 2021
+            "Article1": {"timestamp": 1609567200},  # Jan 2, 2021
             "Article2": {"timestamp": 1612137600},  # Feb 1, 2021
-            "Article3": {"timestamp": 1577836800},  # Jan 1, 2020
+            "Article3": {"timestamp": 1577944800},  # Jan 2, 2020
         }
         year = 2020
         expected = ["Article3"]
@@ -344,7 +339,7 @@ class TestSearch(TestCase):
         """Test when no articles are from the specified year."""
         article_titles = ["Article1", "Article2", "Article3"]
         title_to_info = {
-            "Article1": {"timestamp": 1609459200},  # Jan 1, 2021
+            "Article1": {"timestamp": 1609567200},  # Jan 2, 2021
             "Article2": {"timestamp": 1612137600},  # Feb 1, 2021
             "Article3": {"timestamp": 1614556800},  # Mar 1, 2021
         }
@@ -352,8 +347,6 @@ class TestSearch(TestCase):
         expected = []  # No articles from 2020
         result = articles_from_year(year, article_titles, title_to_info)
         self.assertEqual(result, expected)
-
-
+# Write tests above this line. Do not remove.
 if __name__ == "__main__":
-    unittest.main()
-
+    main()
