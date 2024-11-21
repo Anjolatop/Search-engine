@@ -360,18 +360,7 @@ class TestSearch(TestCase):
     # INTEGRATION TESTS #
     #####################
 
-    @patch('builtins.input')
-    def test_example_integration_test(self, input_mock):
-        keyword = 'soccer'
-        advanced_option = 5
-        advanced_response = 2009
-
-        output = get_print(input_mock, [keyword, advanced_option, advanced_response])
-        expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + str(advanced_response) + "\n\nHere are your articles: ['Spain national beach soccer team', 'Steven Cohen (soccer)']\n"
-
-        self.assertEqual(output, expected)
-
-    @patch('builtins.input')
+   @patch('builtins.input')
     def test_example_integration_test(self, input_mock):
         keyword = 'soccer'
         advanced_option = 5
@@ -387,86 +376,137 @@ class TestSearch(TestCase):
         advanced_option = 6
 
         output = get_print(input_mock, [keyword, advanced_option])
-        expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + "\n\nHere are your articles: ['Spain national beach soccer team', 'Will Johnson (soccer)','Steven Cohen (soccer)']\n"
-
+        expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + "\n\nHere are your articles: ['Spain national beach soccer team', 'Will Johnson (soccer)', 'Steven Cohen (soccer)']\n"
+        self.assertEqual(output, expected)
     @patch('builtins.input')
     def test_2(self, input_mock):
         keyword = 'Anjola'
         advanced_option = 6
 
-        output = get_print(input_mock, [keyword, advanced_option])
-        expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + "\n\nNo articles found\n"
+    #     output = get_print(input_mock, [keyword, advanced_option])
+    #     expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + "\n\nNo articles found\n"
+    #     self.assertEqual(output, expected)
+    # @patch('builtins.input')
+    # def test_3(self, input_mock):
+    #     keyword = ' '
+    #     advanced_option = 6
 
-    @patch('builtins.input')
-    def test_3(self, input_mock):
-        keyword = ' '
-        advanced_option = 6
+    #     output = get_print(input_mock, [keyword, advanced_option])
+    #     expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + "\n\nNo articles found\n"
+    #     self.assertEqual(output, expected)
+    # @patch('builtins.input')
+    # def test_4(self, input_mock):
+    #     keyword = 'sOccEr'
+    #     advanced_option = 1
+    #     advanced_response = 3000 
+    #     output = get_print(input_mock, [keyword, advanced_option, advanced_response])
+    #     expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + str(advanced_response) + "\n\nHere are your articles: ['Spain national beach soccer team', 'Steven Cohen (soccer)']\n"
+    #     self.assertEqual(output, expected)
+    # @patch('builtins.input')
+    # def test_5(self, input_mock):
+    #     keyword = ''
+    #     advanced_option = 1
+    #     advanced_response = 3000 
+    #     output = get_print(input_mock, [keyword, advanced_option, advanced_response])
+    #     expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + str(advanced_response) + "\n\nNo articles found\n"
+    #     self.assertEqual(output, expected)
+    # @patch('builtins.input')
+    # def test_6(self, input_mock):
+    #     keyword = 'Anjola'
+    #     advanced_option = 1
+    #     advanced_response = 3000 
+    #     output = get_print(input_mock, [keyword, advanced_option, advanced_response])
+    #     expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + str(advanced_response) + "\n\nNo articles found\n"
+    #     self.assertEqual(output, expected)
+    # @patch('builtins.input')
+    # def test_7(self, input_mock):
+    #     keyword = '     DOG'
+    #     advanced_option = 2
+    #     output = get_print(input_mock, [keyword, advanced_option])
+    #     expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + "\n\nHere are your articles: {'Pegship': ['Black dog (ghost)'], 'Mack Johnson': ['Mexican dog-faced bat'], 'Mr Jake': ['Dalmatian (dog)', 'Sun dog'], 'Jack Johnson': ['Guide dog']}\n"
+    #     self.assertEqual(output, expected)
+    # @patch('builtins.input')
+    # def test_8(self, input_mock):
+    #     keyword = 'ANJOLA'
+    #     advanced_option = 2
+    #     output = get_print(input_mock, [keyword, advanced_option])
+    #     expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + "\n\nNo articles found\n"
+    #     self.assertEqual(output, expected)
+    # @patch('builtins.input')
+    # def test_9(self, input_mock):
+    #     keyword = 'dog'
+    #     advanced_option = 3
+    #     advanced_response = "          Mr Jake"
+    #     output = get_print(input_mock, [keyword, advanced_option, advanced_response])
+    #     expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + str(advanced_response) + "\n\nHere are your articles: ['Dalmatian (dog)', 'Sun dog']\n"
+    #     self.assertEqual(output, expected)
+    # @patch('builtins.input')
+    # def test_10(self, input_mock):
+    #     keyword = '                DOG                 '
+    #     advanced_option = 3   
+    #     advanced_response = "Mr Sudin" 
+    #     output = get_print(input_mock, [keyword, advanced_option, advanced_response])
+    #     expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + str(advanced_response) + "\n\nNo articles found\n"
+    #     self.assertEqual(output, expected)
+    # @patch('builtins.input')
+    # def test_11(self, input_mock):
+    #     keyword = 'DOGS'
+    #     advanced_option = 3
+    #     advanced_response = "Mr Jake" 
+    #     output = get_print(input_mock, [keyword, advanced_option, advanced_response])
+    #     expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + str(advanced_response)+ "\n\nNo articles found\n"
+    #     self.assertEqual(output, expected)
+        
+    # @patch('builtins.input')
+    # def test_12(self, input_mock):
+    #     keyword = '    SOCCER     '
+    #     advanced_option = 4
+    #     advanced_response = " BeACh "
+    #     output = get_print(input_mock, [keyword, advanced_option,advanced_response])
+    #     expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + str(advanced_response) + "\n\nHere are your articles: ['Will Johnson (soccer)', 'Steven Cohen (soccer)']\n"
+    #     self.assertEqual(output, expected)
+    # @patch('builtins.input')
+    # def test_13(self, input_mock):
+    #     keyword = '    SOC     '
+    #     advanced_option = 4
+    #     advanced_response = " Beach "
+    #     output = get_print(input_mock, [keyword, advanced_option, advanced_response])
+    #     expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + str(advanced_response) + "\n\nNo articles found\n"
+    #     self.assertEqual(output, expected)
+    # @patch('builtins.input')
+    # def test_14(self, input_mock):
+    #     keyword = '    SOCCER     '
+    #     advanced_option = 4
+    #     advanced_response = " Base "
+    #     output = get_print(input_mock, [keyword, advanced_option, advanced_response])
+    #     expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + str(advanced_response) + "\n\nNo articles found\n"
+    #     self.assertEqual(output, expected)
+    # @patch('builtins.input')
+    # def test_15(self, input_mock):
+    #     keyword = 'soccer'
+    #     advanced_option = 5
+    #     advanced_response = 2008
+    #     output = get_print(input_mock, [keyword, advanced_option, advanced_response])
+    #     expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + str(advanced_response) + "\n\nHere are your articles: ['Will Johnson (soccer)']\n"
+    #     self.assertEqual(output, expected)
+    # @patch('builtins.input')
+    # def test_16(self, input_mock):
+    #     keyword = 'soccer'
+    #     advanced_option = 5
+    #     advanced_response = 2009
+    #     output = get_print(input_mock, [keyword, advanced_option, advanced_response])
+    #     expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + str(advanced_response) + "\n\nNo articles found\n"
+    #     self.assertEqual(output, expected)
+    # @patch('builtins.input')
+    # def test_17(self, input_mock):
+    #     keyword = 'ANjola'
+    #     advanced_option = 5
+    #     advanced_response = 2009
+    #     output = get_print(input_mock, [keyword, advanced_option, advanced_response])
+    #     expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + str(advanced_response) + "\n\nNo articles found\n"
+    #     self.assertEqual(output, expected)
+# Write tests above this line. Do not remove.
 
-        output = get_print(input_mock, [keyword, advanced_option])
-        expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + "\n\nNo articles found\n"
 
-    @patch('builtins.input')
-    def test_4(self, input_mock):
-        keyword = 'soccer'
-        advanced_option = 1
-        advanced_response = 3000 
-        output = get_print(input_mock, [keyword, advanced_option, advanced_response])
-        expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + str(advanced_response) + "\n\nHere are your articles: ['Spain national beach soccer team', 'Steven Cohen (soccer)']\n"
-
-    @patch('builtins.input')
-    def test_5(self, input_mock):
-        keyword = ''
-        advanced_option = 1
-        advanced_response = 3000 
-        output = get_print(input_mock, [keyword, advanced_option, advanced_response])
-        expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + str(advanced_response) + "\n\nNo articles found\n"
-
-    @patch('builtins.input')
-    def test_6(self, input_mock):
-        keyword = 'Anjola'
-        advanced_option = 1
-        advanced_response = 3000 
-        output = get_print(input_mock, [keyword, advanced_option, advanced_response])
-        expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + str(advanced_response) + "\n\nNo articles found\n"
-  
-    @patch('builtins.input')
-    def test_7(self, input_mock):
-        keyword = '     dog'
-        advanced_option = 2
-        output = get_print(input_mock, [keyword, advanced_option])
-        expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + "\n\nHere are your articles: {'Pegship': ['Black dog (ghost)'], 'Mack Johnson': ['Mexican dog-faced bat'], 'Mr Jake': ['Dalmatian (dog)', 'Sun dog'], 'Jack Johnson': ['Guide dog']}\n"
-
-    @patch('builtins.input')
-    def test_7(self, input_mock):
-        keyword = 'ANJOLA'
-        advanced_option = 2
-        output = get_print(input_mock, [keyword, advanced_option])
-        expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + "\n\nNo articles found\n"
-
-    @patch('builtins.input')
-    def test_7(self, input_mock):
-        keyword = 'DOG'
-        advanced_option = 3
-        advanced_response = "          Mr Jake"
-        output = get_print(input_mock, [keyword, advanced_option, advanced_response])
-        expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + str(advanced_response) + "\n\nHere are your articles: ['Dalmatian (dog)', 'Sun dog']\n"
-
-    @patch('builtins.input')
-    def test_7(self, input_mock):
-        keyword = '                DOG                 '
-        advanced_option = 3   
-        advanced_response = "Mr Sudin" 
-        output = get_print(input_mock, [keyword, advanced_option, advanced_response])
-        expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + str(advanced_response) + "\n\nNo articles found\n"
-
-    @patch('builtins.input')
-    def test_7(self, input_mock):
-        keyword = 'DOGS'
-        advanced_option = 3
-        advanced_response = "Mr Jake" 
-        output = get_print(input_mock, [keyword, advanced_option])
-        expected = print_basic() + keyword + '\n' + print_advanced() + str(advanced_option) + '\n' + print_advanced_option(advanced_option) + str(advanced_response) + "\n\nNo articles found\n"
-
-    @patch('builtins.input')
-    def test_7(self, input_mock):
-        ke
+if __name__ == "__main__":
+    main()
